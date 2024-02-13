@@ -49,3 +49,11 @@ stars<- scrape (sesh)%>%
 stars  
   
 ```
+
+```{r}
+DF <- data.frame(Usernames = username,
+                 Reviewer_Date = reviewerDate,
+                 Reviewer_Content = revContent,
+                 Rating = stars)
+```
+

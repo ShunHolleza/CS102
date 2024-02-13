@@ -6,8 +6,8 @@ library(polite)
 polite::use_manners(save_as = 'polite_scrape.R')
 
 
-url <- 'https://www.imdb.com/title/tt0111161/reviews?ref_=tt_urv'
-sesh<- bow(url,
+url2 <- 'https://www.imdb.com/title/tt0383574/reviews?ref_=tt_urv'
+sesh<- bow(url2,
            user_agent = "Educational")
 sesh
 
@@ -46,7 +46,8 @@ stars
 DF<- data.frame(Username = username,
                 Reviewer_Date= reviewerDate,
                 Reviewer_Content = revContent,
-                Stars= stars
+                Ratings = stars
                 
 )
-write.csv(DF, "1stMovieRev.csv")
+
+write.csv(DF, "3rdmovie.csv")
