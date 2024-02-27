@@ -57,5 +57,5 @@ DF <- data.frame(
 
 
 
-write.csv(DF, file = "2ndmovie.csv", row.names = FALSE)
+write.csv(DF, file = "3rdmovie.csv", row.names = FALSE)
 print(DF)
