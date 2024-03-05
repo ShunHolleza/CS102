@@ -19,7 +19,7 @@ subject <- NULL
 abstract <- NULL
 meta <- NULL
 
-pages <- seq(from = 0, to = 0, by = 2)
+pages <- seq(from = 0, to = 150, by = 50)
 
 for( i in pages ){
   
@@ -29,7 +29,7 @@ for( i in pages ){
     html_nodes('a[href^="https://arxiv.org/abs"]') %>% 
     html_attr('href')
   
-  for(j in 1:min(length(tmp_list), 10)){
+  for(j in 1:min(length(tmp_list), 50)){
     
     tmp_paragraph <- read_html(tmp_list[j])
     
@@ -62,7 +62,7 @@ for( i in pages ){
     Sys.sleep(1)
     
   }
-  cat((i/10) + 1,'/ 1 page\n')
+  cat((i/50) + 1,'/ 3 page\n')
   
 }
 
