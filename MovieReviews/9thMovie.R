@@ -49,6 +49,7 @@ for (page in 1:pagesToscrape) {
 
 
 DF <- data.frame(
+  Movie_Title = rep("The Amazing Spider-Man", reviewsToscrape),
   Usernames = usernames[1:300],
   Reviewer_Date = revDates[1:300],
   Reviewer_Content = revContents[1:300],

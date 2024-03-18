@@ -6,7 +6,7 @@ library(polite)
 
 polite::use_manners(save_as = 'polite_scrape.R')
 
-url6 <- 'https://www.imdb.com/title/tt10648342/reviews/_ajax?ref_=undefined&paginationKey=%s'
+url6 <- 'https://www.imdb.com/title/tt6791350/reviews/_ajax?ref_=undefined&paginationKey=%s'
 
 
 scrapePage <- function(url6, PaginationKey) {
@@ -49,6 +49,7 @@ for (page in 1:pagesToscrape) {
 
 
 DF <- data.frame(
+  Movie_Title = rep("Guardians of the Galaxy Vol. 3", reviewsToscrape),
   Usernames = usernames[1:300],
   Reviewer_Date = revDates[1:300],
   Reviewer_Content = revContents[1:300],

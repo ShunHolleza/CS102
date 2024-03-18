@@ -9,15 +9,17 @@ url <- 'https://www.imdb.com/title/tt0848228/reviews/_ajax?ref_=undefined&pagina
 
 scrapePage <- function(url, PaginationKey) {
   session <- bow(sprintf(url, PaginationKey), user_agent = "Educational")
-
+  
+  
   usernames <- scrape(session) %>% html_nodes('span.display-name-link') %>% html_text()
   revDates <- scrape(session) %>% html_nodes('span.review-date') %>% html_text()
   revContents <- scrape(session) %>% html_nodes('div.text.show-more__control') %>% html_text()
   stars <- scrape(session) %>% html_nodes('span.rating-other-user-rating') %>% html_text()
   PaginationKey <- scrape(session) %>% html_nodes("div.load-more-data") %>% html_attr("data-key")
 
-  return(list(usernames = usernames, revDates = revDates, revContents = revContents, stars = stars, PaginationKey = PaginationKey))
+  return(list(title = title, usernames = usernames, revDates = revDates, revContents = revContents, stars = stars, PaginationKey = PaginationKey))
 }
+
 
 usernames <- character(0)
 revDates <- character(0)
@@ -47,6 +49,7 @@ for (page in 1:pagesToscrape) {
 
 
 DF <- data.frame(
+  Movie_title = rep("The Avengers", reviewsToscrape),
   Usernames = usernames[1:300],
   Reviewer_Date = revDates[1:300],
   Reviewer_Content = revContents[1:300],

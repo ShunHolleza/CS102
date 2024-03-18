@@ -6,11 +6,11 @@ library(polite)
 
 polite::use_manners(save_as = 'polite_scrape.R')
 
-url3 <- 'https://www.imdb.com/title/tt0800369/reviews/_ajax?ref_=undefined&paginationKey=%s'
+url4 <- 'https://www.imdb.com/title/tt0800369/reviews/_ajax?ref_=undefined&paginationKey=%s'
 
 
-scrapePage <- function(url3, PaginationKey) {
-  session <- bow(sprintf(url3, PaginationKey), user_agent = "Educational")
+scrapePage <- function(url4, PaginationKey) {
+  session <- bow(sprintf(url4, PaginationKey), user_agent = "Educational")
   
   usernames <- scrape(session) %>% html_nodes('span.display-name-link') %>% html_text()
   revDates <- scrape(session) %>% html_nodes('span.review-date') %>% html_text()
@@ -33,7 +33,7 @@ perPage <- 25
 pagesToscrape <- ceiling(reviewsToscrape / perPage)
 
 for (page in 1:pagesToscrape) {
-  scrapedData <- scrapePage(url3, PaginationKey)
+  scrapedData <- scrapePage(url4, PaginationKey)
   
   usernames <- c(usernames, scrapedData$usernames)
   revDates <- c(revDates, scrapedData$revDates)
@@ -49,6 +49,7 @@ for (page in 1:pagesToscrape) {
 
 
 DF <- data.frame(
+  Movie_Title = rep("Thor", reviewsToscrape),
   Usernames = usernames[1:300],
   Reviewer_Date = revDates[1:300],
   Reviewer_Content = revContents[1:300],
@@ -57,5 +58,5 @@ DF <- data.frame(
 
 
 
-write.csv(DF, file = "2ndmovie.csv", row.names = FALSE)
+write.csv(DF, file = "4rthmovie.csv", row.names = FALSE)
 print(DF)

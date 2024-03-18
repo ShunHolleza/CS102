@@ -6,7 +6,7 @@ library(polite)
 
 polite::use_manners(save_as = 'polite_scrape.R')
 
-url5 <- 'https://www.imdb.com/title/tt0800369/reviews/_ajax?ref_=undefined&paginationKey=%s'
+url5 <- 'https://www.imdb.com/title/tt10648342/reviews/_ajax?ref_=undefined&paginationKey=%s'
 
 
 scrapePage <- function(url5, PaginationKey) {
@@ -49,6 +49,7 @@ for (page in 1:pagesToscrape) {
 
 
 DF <- data.frame(
+  Movie_Title = rep("Thor: Love and Thunder", reviewsToscrape),
   Usernames = usernames[1:300],
   Reviewer_Date = revDates[1:300],
   Reviewer_Content = revContents[1:300],
