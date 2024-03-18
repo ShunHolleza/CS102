@@ -9,6 +9,16 @@ movie8 <- read.csv("/cloud/project/MovieReviews/CSVfiles/8thmovie.csv")
 movie9 <- read.csv("/cloud/project/MovieReviews/CSVfiles/9thmovie.csv")
 movie10 <- read.csv("/cloud/project/MovieReviews/CSVfiles/10thmovie.csv")
 
+#para ma ensure  ang column names consistent sa bilog nga data frame
+colnames(movie2) <- colnames(movie1)
+colnames(movie3) <- colnames(movie1)
+colnames(movie4) <- colnames(movie1)
+colnames(movie5) <- colnames(movie1)
+colnames(movie6) <- colnames(movie1)
+colnames(movie7) <- colnames(movie1)
+colnames(movie8) <- colnames(movie1)
+colnames(movie9) <- colnames(movie1)
+colnames(movie10) <- colnames(movie1)
 
 MergedMovies <- rbind(movie1, movie2, movie3, movie4, movie5, movie6, movie7, movie8, movie9, movie10)
 
